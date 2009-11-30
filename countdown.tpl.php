@@ -9,8 +9,8 @@
  * Available variables:
  * - $items: the list.
  */
-define('DAY', 60*60*24);
-define('HOUR', 60*60);
+define('COUNTDOWN_DAY_SECS', 60*60*24);
+define('COUNTDOWN_HOUR_SECS', 60*60);
 
 $path = drupal_get_path('module', 'countdown');
 drupal_add_css($path .'/countdown.css');
@@ -26,10 +26,10 @@ else {
 }
 
 $accuracy  = variable_get('countdown_accuracy', 'd');
-$days_left = floor($difference/DAY);
-$hrs_left  = floor(($difference - $days_left*DAY)/HOUR);
-$min_left  = floor(($difference - $days_left*DAY - $hrs_left*HOUR)/60);
-$secs_left = floor(($difference - $days_left*DAY - $hrs_left*HOUR - $min_left*60));
+$days_left = floor($difference/COUNTDOWN_DAY_SECS);
+$hrs_left  = floor(($difference - $days_left*COUNTDOWN_DAY_SECS)/COUNTDOWN_HOUR_SECS);
+$min_left  = floor(($difference - $days_left*COUNTDOWN_DAY_SECS - $hrs_left*COUNTDOWN_HOUR_SECS)/60);
+$secs_left = floor(($difference - $days_left*COUNTDOWN_DAY_SECS - $hrs_left*COUNTDOWN_HOUR_SECS - $min_left*60));
 
 if (variable_get('countdown_labels', '') == 'inline') {
   print t('<div id="countdown-digit-days" class="countdown digit">!i</span>', array('!i' => format_plural($days_left, '1</div><div id="countdown-label-days" class="countdown label">day', '@count</div><span id="countdown-label-days" class="countdown label">days')));
