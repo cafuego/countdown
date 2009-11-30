@@ -1,6 +1,12 @@
 /**
+ * $Id$
+ *
  * CSS selectors for the countdown block.
- * These defaults look fine on the Waffles theme.
+ *
+ * These defaults work for the inline display style
+ * but once you move the labels to below the digit
+ * you will definitely want to override at least
+ * these selectors and possibly others too.
  */
 
 #block-countdown-0 div.content div.countdown,
@@ -32,6 +38,11 @@
   margin-left: 2px;
 }
 
+/**
+ * When using inline display these are helpful. You
+ * will want to override them when displaying labels
+ * under the digits.
+ */
 #countdown-digit-hrs:before,
 #countdown-digit-mins:before,
 #countdown-digit-secs:before {
