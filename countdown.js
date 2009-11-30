@@ -17,20 +17,20 @@ if (Drupal.jsEnabled) {
     _countdown_this.initTime[1] = 0;
     _countdown_this.initTime[2] = 0;
     _countdown_this.initTime[3] = 0;
-    _countdown_this.objEM[0].innerHTML = String('0');
-    _countdown_this.objEM[1].innerHTML = String('0');
-    _countdown_this.objEM[2].innerHTML = String('0');
-    _countdown_this.objEM[3].innerHTML = String('0');
+    _countdown_this.objDIV[0].innerHTML = String('0');
+    _countdown_this.objDIV[1].innerHTML = String('0');
+    _countdown_this.objDIV[2].innerHTML = String('0');
+    _countdown_this.objDIV[3].innerHTML = String('0');
   }
 
   jQuery.fn.extend({
     onready : function() { return this.each(function() { 
-      this.objEM = new Array();
+      this.objDIV = new Array();
       this.initTime = new Array();
       for (i = 0; i < this.childNodes.length; i ++) {
         thisChild = this.childNodes.item(i);
-        if (thisChild.tagName == 'EM') {
-          this.objEM[this.objEM.length] = thisChild;
+        if (thisChild.tagName == 'DIV') {
+          this.objDIV[this.objDIV.length] = thisChild;
           this.initTime[this.initTime.length] = parseInt(thisChild.innerHTML);
         }
         else if (thisChild.nodeName == '#text') {
@@ -73,7 +73,7 @@ if (Drupal.jsEnabled) {
             }
           }
           _countdown_this.initTime[accuracy] = newValue;
-          _countdown_this.objEM[accuracy].innerHTML = String(newValue);
+          _countdown_this.objDIV[accuracy].innerHTML = String(newValue);
         }
       }, _countdown_freq[_countdown_accuracy] * 1000);
     }); }

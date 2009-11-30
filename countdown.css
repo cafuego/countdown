@@ -1,0 +1,39 @@
+/**
+ * CSS selectors for the countdown block.
+ * These defaults look fine on the Waffles theme.
+ */
+
+#block-countdown-0 div.content div.countdown,
+#block-countdown-0 div.content span.countdown {
+  display: inline-block;
+}
+
+#countdown-digit-days,
+#countdown-digit-hrs,
+#countdown-digit-mins,
+#countdown-digit-secs,
+#countdown-label-days,
+#countdown-label-hrs,
+#countdown-label-mins,
+#countdown-label-secs {
+  text-align: center;
+}
+
+#countdown-digit-days,
+#countdown-label-days {
+  color: #600;
+}
+
+#block-countdown-0 div.content div.digit {
+  margin-left: 2px;
+}
+
+#block-countdown-0 div.content span.label {
+  margin-left: 2px;
+}
+
+#countdown-digit-hrs:before,
+#countdown-digit-mins:before,
+#countdown-digit-secs:before {
+  content: ", ";
+}

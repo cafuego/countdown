@@ -44,7 +44,7 @@ function countdown_block($op = 'list', $delta = 0, $edit = array()) {
       '#size' => 30,
       '#maxlength' => 200,
       '#description' => t("Event name you're counting to or from."),
-      '#required' => TRUE
+      '#required' => FALSE
     );
     $form['countdown_url'] = array(
       '#type' => 'textfield',
@@ -54,6 +54,19 @@ function countdown_block($op = 'list', $delta = 0, $edit = array()) {
       '#maxlength' => 200,
       '#description' => t("Turn the event description into a link to more information about the event."),
       '#required' => FALSE
+    );
+
+    $labels = array(
+      'inline' => 'Display labels inline',
+      'below' => 'Display labels below the digits',
+      'none' => 'Do not display labels',
+    );
+    $form['countdown_labels'] = array(
+      '#type' => 'select',
+      '#title' => t('Unit Labels'),
+      '#description' => t('Choose where you want the unit labels to be displayed.'),
+      '#default_value' => variable_get('countdown_labels', 'inline'),
+      '#options' => $labels,
     );
 
     $form['countdown_accuracy'] = array(
@@ -133,6 +146,7 @@ function countdown_block($op = 'list', $delta = 0, $edit = array()) {
     variable_set('countdown_url', $edit['countdown_url']);
     variable_set('countdown_accuracy', $edit['countdown_accuracy']);
     variable_set('countdown_timestamp', mktime((int)$edit['hour'], (int)$edit['min'], (int)$edit['sec'], (int)$edit['month'], (int)$edit['day'], (int)$edit['year']));
+    variable_set('countdown_labels', $edit['countdown_labels']);
 
   case 'view':
     if (user_access('access content')) {
